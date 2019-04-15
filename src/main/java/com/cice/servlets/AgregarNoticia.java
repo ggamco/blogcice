@@ -33,6 +33,9 @@ public class AgregarNoticia extends HttpServlet {
             pst.setString(1,titulo);
             pst.setString(2, noticia);
             pst.execute();
+            pst.close();
+            con.close();
+            resp.sendRedirect("index.jsp");
 
             //stm.execute("INSERT INTO noticias (idNoticia, titulo, cuerpo) VALUES (1, '"+titulo+"', 'cuerpo')");
         } catch (ClassNotFoundException e) {
@@ -46,6 +49,6 @@ public class AgregarNoticia extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp);
+        doGet(req, resp);
     }
 }
